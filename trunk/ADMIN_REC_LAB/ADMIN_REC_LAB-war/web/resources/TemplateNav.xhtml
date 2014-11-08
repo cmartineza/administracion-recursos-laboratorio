@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link href="${pageContext.request.contextPath}/ADMIN_REC_LAB-war/resources/css/default.css" rel="stylesheet" type="text/css" />
+        <link href="${pageContext.request.contextPath}/ADMIN_REC_LAB-war/resources/css/cssLayout.css" rel="stylesheet" type="text/css" />
+         <link href="${pageContext.request.contextPath}/ADMIN_REC_LAB-war/resources/css/style.css" rel="stylesheet" type="text/css" />
+    
+        <title><ui:insert name="title">Bienvenido</ui:insert></title>
+    </h:head>
+
+    <h:body>
+
+        <div id="contenedor">
+            <div id="top" class="top">
+
+                <div class="infoBar">
+                    <img src="${pageContext.request.contextPath}/ADMIN_REC_LAB-war/images/colombia.gif" style="margin-top:5px; margin-left: 13px;"/>
+                        <label>
+                            Bogotá, Colombia - 27 de Octubre de 2014
+                        </label>
+
+                        <button>Cerrar Sesion</button>
+                        <label style="float:right;margin-right: 10px;">
+                            Bienvenido 
+                        </label>
+                </div>
+                <div class="header">
+                    <label>Laboratorio Mecanica</label>
+                </div>
+
+            </div>
+            <div>
+                <div id="left">
+
+                </div>
+                <div id="content" class="left_content">
+                    <ui:insert name="content">Content</ui:insert>
+                </div>
+            </div>
+        </div>
+    </h:body>
+
+</html>
