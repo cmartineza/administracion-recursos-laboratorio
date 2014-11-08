@@ -20,13 +20,27 @@
         <from-view-id>/index.xhtml</from-view-id>
         <navigation-case>
             <from-outcome>adminUsuarios</from-outcome>
-            <to-view-id>/secure/adminUsuarios.xhtml</to-view-id>
+            <to-view-id>/secure/usuarios/adminUsuarios.xhtml</to-view-id>
             <redirect>true</redirect>
         </navigation-case>
     </navigation-rule>
-    <managed-bean>
-        <managed-bean-name>controladorAgenda</managed-bean-name>
-        <managed-bean-class>com.ucentral.controlador.ControladorAgenda</managed-bean-class>
-        <managed-bean-scope>request</managed-bean-scope>
-    </managed-bean>
+    
+    <navigation-rule>
+        <from-view-id>/index.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>reserva</from-outcome>
+            <to-view-id>/secure/lab_mov/reserva.xhtml</to-view-id>
+            <redirect>true</redirect>
+        </navigation-case>
+    </navigation-rule> 
+    
+      <navigation-rule>
+        <from-view-id>/index.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>consulta_reserva</from-outcome>
+            <to-view-id>/secure/lab_mov/consulta_reserva.xhtml</to-view-id>
+            <redirect>true</redirect>
+        </navigation-case>
+    </navigation-rule>    
+    
 </faces-config>
