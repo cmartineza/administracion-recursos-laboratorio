@@ -1,0 +1,128 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="./../../resources/TemplateNav.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:define name="title">
+        .::Administración de Usuarios::.
+    </ui:define>
+
+    <ui:define name="content">
+        <h:form id="formBusquedaConsulta">
+            <p:messages id="messages" showDetail="true" showSummary="false" closable="true"
+                        autoUpdate="true" />   
+            <p:panel header="Consultar">
+                <p:panelGrid columns="5">
+                    <p:outputLabel value="Tipo de Busqueda" for="tipoBusqueda"/>
+                    <p:selectOneMenu id="tipoBusqueda" label="Tipo de Busqueda" required="true" value="#{controladorUsuarios.tipoBusqueda}">
+                        <f:selectItem itemValue="#{null}" itemLabel="Seleccione."/>
+                        <f:selectItem itemValue="1" itemLabel="Numero de identificación"/>
+                        <f:selectItem itemValue="2" itemLabel="Nombres"/>
+                        <f:selectItem itemValue="3" itemLabel="Apellido 1"/>
+                        <f:selectItem itemValue="4" itemLabel="Apellido 2"/>
+                        <f:selectItem itemValue="5" itemLabel="Pendientes por aprobar"/>
+                        <f:selectItem itemValue="6" itemLabel="Activos en el sistema"/>
+                    </p:selectOneMenu>
+                    <p:outputLabel value="Valor Busqueda" for="txtValorBusqueda"/>
+                    <p:inputText id="txtValorBusqueda" value="#{controladorUsuarios.valorBusqueda}"
+                                 label="Valor Busqueda"  required="true" requiredMessage="Por favor ingresar el valor de la busqueda"/>
+                    <p:commandButton value="Buscar" icon="ui-icon-search" 
+                                     actionListener="#{controladorUsuarios.buscar}"
+                                     update=":form:tableAccionUsuarios,messages"/>
+                </p:panelGrid>
+            </p:panel>
+        </h:form>
+        <h:form id="form">
+            <p:dataTable value="#{controladorUsuarios.list}"  id="tableAccionUsuarios"
+                         var="user">
+                <f:facet name="header">
+                    Usuarios
+                </f:facet>
+                <p:column headerText="Tipo documento">
+                    <h:outputText value="#{user.tipoDocumento.descripcion}"/>
+                </p:column>
+                <p:column headerText="Identificación">
+                    <h:outputText value="#{user.numeroIdentificacion}"/>
+                </p:column>
+                <p:column headerText="Nombres">
+                    <h:outputText value="#{user.nombres}"/>
+                </p:column>
+                <p:column headerText="Apellido 1">
+                    <h:outputText value="#{user.apellido1}"/>
+                </p:column>
+                <p:column headerText="Apellido 2">
+                    <h:outputText value="#{user.apellido2}"/>
+                </p:column>
+                <p:column headerText="Perfil">
+                    <h:outputText value="#{user.perfiles.nombrePerfil}"/>
+                </p:column>
+                <p:column headerText="Estado">
+                    <h:outputText value="#{user.estadoUsuario.descripcion}"/>
+                </p:column>                
+                <p:column style="width:32px;text-align: center">
+                    <p:commandButton update=":formModificar:gridLogModUsu"  oncomplete="PF('dialogModUsu').show()" icon="ui-icon-pencil" title="Modificar">
+                        <f:setPropertyActionListener value="#{user}" target="#{controladorUsuarios.usuario}" />
+                    </p:commandButton>
+                </p:column>
+            </p:dataTable>
+        </h:form>
+        <h:form id="formModificar">
+            <p:dialog header="Modificar Usuarios" id="dialogModUsu" modal="true" widgetVar="dialogModUsu" resizable="false" closeOnEscape="true">
+                <p:messages id="modalMessage" showDetail="true"/>
+                <p:panel id="gridLogModUsu">
+                    <h:panelGrid  rendered="#{not empty controladorUsuarios.usuario}" columns="2">
+                        <p:outputLabel value="Tipo Documento: "/>
+                        <p:outputLabel value="#{controladorUsuarios.usuario.tipoDocumento.descripcion}"/>
+
+                        <p:outputLabel value="Numero de identificación: "/>
+                        <p:outputLabel value="#{controladorUsuarios.usuario.numeroIdentificacion}"/>
+
+                        <p:outputLabel value="Nombres: "/>
+                        <p:outputLabel value="#{controladorUsuarios.usuario.nombres}"/>
+
+                        <p:outputLabel value="Apellido 1: "/>
+                        <p:outputLabel value="#{controladorUsuarios.usuario.apellido1}"/>
+
+                        <p:outputLabel value="Apellido 2: "/>
+                        <p:outputLabel value="#{controladorUsuarios.usuario.apellido2}"/>
+
+                        <p:outputLabel value="Email"/>
+                        <p:outputLabel value="#{controladorUsuarios.usuario.email}"/>
+
+                        <p:outputLabel value="Celular: "/>
+                        <p:outputLabel value="#{controladorUsuarios.usuario.celular}"/>
+
+                        <p:outputLabel value="Perfil: "/>
+                        <p:selectOneMenu required="true" label="Perfil" value="#{controladorUsuarios.usuario.perfiles.idTipoPerfil}"
+                                         requiredMessage="Por seleccionar un perfil">
+                            <f:selectItem itemValue="#{null}" itemLabel="Seleccione.."/>
+                            <f:selectItems value="#{controladorUsuarios.listPerfil}" var="perfil"
+                                           itemValue="#{perfil.idTipoPerfil}" itemLabel="#{perfil.nombrePerfil}"/>
+                        </p:selectOneMenu>        
+
+                        <p:outputLabel value="Estado Usuario: "/>
+                        <p:selectOneMenu required="true" label="Estado Usuario" value="#{controladorUsuarios.usuario.estadoUsuario.idEstado}"
+                                         requiredMessage="Por favor seleccione un estado para el usuario">
+                            <f:selectItem itemValue="#{null}" itemLabel="Seleccione.."/>
+                            <f:selectItems value="#{controladorUsuarios.listEstados}" var="estado"
+                                           itemValue="#{estado.idEstado}" itemLabel="#{estado.descripcion}"/>
+                        </p:selectOneMenu>
+
+                        <h:panelGroup/>
+                        <p:commandButton actionListener="#{controladorUsuarios.modificarUsuario}" value="Modificar" partialSubmit="true" 
+                                        oncomplete="PF('dialogModUsu').hide()" process="gridLogModUsu" 
+                                        update=":form:tableAccionUsuarios,:formBusquedaConsulta:messages"/>
+                    </h:panelGrid>                     
+                </p:panel>
+                 
+
+            </p:dialog>
+          
+        </h:form>
+    </ui:define>
+
+</ui:composition>
