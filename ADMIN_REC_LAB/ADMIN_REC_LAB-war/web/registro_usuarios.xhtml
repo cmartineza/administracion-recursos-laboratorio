@@ -5,9 +5,25 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
+          <link href="${pageContext.request.contextPath}/ADMIN_REC_LAB-war/resources/css/style.css" rel="stylesheet" type="text/css" />
         <title>..::Registro profesores::..</title>
     </h:head>
     <h:body>
+        <div class="infoBar">
+            <img src="${pageContext.request.contextPath}/ADMIN_REC_LAB-war/images/colombia.gif" style="margin-top:5px; margin-left: 13px;"/>
+                <label>
+                    Bogotá, Colombia - 27 de Octubre de 2014
+                </label>
+
+                <button>Cerrar Sesion</button>
+                <label style="float:right;margin-right: 10px;">
+                    Bienvenido 
+                </label>
+        </div>
+        <div class="header">
+            <label>Laboratorio Mecanica</label>
+        </div>
+        
         <h:form id="form"> 
             <p:messages id="msg" closable="true" escape="true" showDetail="true" showSummary="false"/>
             <p:panel id="registroUsuario">
