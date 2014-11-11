@@ -75,4 +75,8 @@ public class PostulacionDetalleDao extends GenericDao<PostulacionDetalle>{
     public PostulacionDetalle findById(String idPostulacion){
         return super.find(idPostulacion);
     }
+    
+    public void modificarPostulacionDetalle(PostulacionDetalle postulacionDetalle){
+        super.update(postulacionDetalle);
+    }
 }
