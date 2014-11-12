@@ -1,58 +1,14 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
-                template="./../../resources/TemplateNav.xhtml"
-                xmlns:p="http://primefaces.org/ui"
-                 xmlns:h="http://xmlns.jcp.org/jsf/html">
+                template="./../../resources/TemplateNav.xhtml">
 
     <ui:define name="title">
-        .::Reservas::.
+        title
     </ui:define>
-    <ui:define name="contents">
-    <h:form id="form">
-             <p:dialog widgetVar="postularModal" modal="true" id="postularModal">
-                 <h:panelGrid columns="2">
-                     <p:outputLabel for="txtFecha" value="Fecha"/>
-                     <p:calendar id="txtFecha" value="" navigator="true" pattern="dd-MM-yyyy" locale="es"/>
-                     <p:outputLabel for="txtHoraIni" value="Hora Inicio:"/>
-                     <p:calendar id="txtHoraIni" required="true" value="#{agenda.fecha1}" pattern="HH:mm a" timeOnly="true"  />
-                     <p:outputLabel for="txtHoraFin" value="Hora Fin: "/>
-                     <p:calendar id="txtHoraFin" required="true" value="#{agenda.fecha2}" pattern="HH:mm a" timeOnly="true"  />
-                     <p:outputLabel value="Guia de laboratorio: "/>
-                     <p:fileUpload value="#{agenda.file}" mode="simple" /> 
-                     <p:commandButton value="Guardar" ajax="false" actionListener="#{agenda.upload}" disabled="true" />
-                 </h:panelGrid>
-             </p:dialog>
-             <p:schedule id="scheduleLocale" value="#{postulacion.eventModel}" locale="es" />
-         </h:form>
 
-         <script type="text/javascript">
-             PrimeFaces.locales['es'] = {
-                 closeText: 'cerrar',
-                 prevText: 'anterior',
-                 nextText: 'siguiente',
-                 currentText: 'Hoy',
-                 monthNames: ['Enero','Febrero','Marzo','Abril','Mayo','Junio',
-                     'Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'],
-                 monthNamesShort: ['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'],
-                 dayNames: ['Domingo','Lunes','Martes','Miercoles','Jueves','Viernes','Sabado'],
-                 dayNamesShort: ['Do','Lu','Ma','Mi','Ju','Vi','Sa'],
-                 dayNamesMin: ['Do','Lu','Ma','Mi','Ju','Vi','Sa'],
-                 weekHeader: 'Sm',
-                 firstDay: 1,
-                 isRTL: false,
-                 showMonthAfterYear: false,
-                 yearSuffix: '',
-                 month: 'Mes',
-                 week: 'Semana',
-                 day: 'Día',
-                 allDayText : 'Todo el dia'
-             };
-         </script>
-         <style type="text/css">
-             .value {
-                 width: 1000px;
-             }
-         </style>
-    </ui:define> 
+    <ui:define name="content">
+        content
+    </ui:define>
+
 </ui:composition>

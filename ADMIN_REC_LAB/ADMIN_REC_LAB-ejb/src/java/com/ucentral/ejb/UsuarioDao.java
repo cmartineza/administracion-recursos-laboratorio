@@ -22,7 +22,7 @@ public class UsuarioDao extends GenericDao<Usuario>{
         super(Usuario.class);
     }
     
-    public Usuario login(String idUsuario, String contrasena){
+    public Usuario login(int idUsuario, String contrasena){
         Map parameter =  new HashMap();
         parameter.put("id", idUsuario);
         parameter.put("pass", contrasena);

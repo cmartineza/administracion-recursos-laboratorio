@@ -29,12 +29,9 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Archivo.findAll", query = "SELECT a FROM Archivo a"),
     @NamedQuery(name = "Archivo.findByIdArchivo", query = "SELECT a FROM Archivo a WHERE a.idArchivo = :idArchivo"),
     @NamedQuery(name = "Archivo.findByNombreReal", query = "SELECT a FROM Archivo a WHERE a.nombreReal = :nombreReal"),
-    @NamedQuery(name = "Archivo.findByNombreReferenciaApl", query = "SELECT a FROM Archivo a WHERE a.nombreReferenciaApl = :nombreReferenciaApl"),
-    @NamedQuery(name = "Archivo.findByUsuario" , query = "SELECT a FROM Archivo a INNER JOIN a.usuarios u WHERE u.numeroIdentificacion = :idUsuario")
-})
+    @NamedQuery(name = "Archivo.findByNombreReferenciaApl", query = "SELECT a FROM Archivo a WHERE a.nombreReferenciaApl = :nombreReferenciaApl")})
 public class Archivo implements Serializable {
     private static final long serialVersionUID = 1L;
-    public static final String findByUsuario = "Archivo.findByUsuario";
     @Id
     @Basic(optional = false)
     @NotNull

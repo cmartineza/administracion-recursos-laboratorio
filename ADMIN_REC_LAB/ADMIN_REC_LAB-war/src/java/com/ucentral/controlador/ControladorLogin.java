@@ -34,7 +34,7 @@ public class ControladorLogin implements Serializable {
     }
     public String login(){
         Usuario usuario = serviceAusuario.validarUsuario(
-                idUsuario, contrasena);
+                Integer.parseInt(idUsuario), contrasena);
         System.out.println("constrasena "+contrasena);
         System.out.println("usuario "+idUsuario);
         if(usuario != null){

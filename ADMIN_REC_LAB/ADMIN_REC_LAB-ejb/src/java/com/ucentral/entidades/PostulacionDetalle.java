@@ -34,10 +34,10 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "PostulacionDetalle.findByHoraInicial", query = "SELECT p FROM PostulacionDetalle p WHERE p.horaInicial = :horaInicial"),
     @NamedQuery(name = "PostulacionDetalle.findByHoraFinal", query = "SELECT p FROM PostulacionDetalle p WHERE p.horaFinal = :horaFinal"),
     @NamedQuery(name = "PostulacionDetalle.findByFechaPostulacion", query = "SELECT p FROM PostulacionDetalle p WHERE p.fechaPostulacion = :fechaPostulacion"),
-    @NamedQuery(name = "PostulacionDetalle.findByDay", query="SELECT p FROM PostulacionDetalle p INNER JOIN p.postulacion po  WHERE p.fechaPostulacion = :fechaPostulacion  AND  po.estadosPostulacion.idEstadoPostulacion = :idEstadoPostulacion"),
-    @NamedQuery(name = "PostulacionDetalle.findByDayAndHour", query="SELECT p FROM PostulacionDetalle p INNER JOIN p.postulacion po  WHERE p.fechaPostulacion = :fechaPostulacion AND p.horaInicial = :hora  AND  po.estadosPostulacion.idEstadoPostulacion =:idEstadoPostulacion"),
-    @NamedQuery(name = "PostulacionDetalle.findByDate", query="SELECT p FROM PostulacionDetalle p INNER JOIN p.postulacion po WHERE p.fechaPostulacion BETWEEN :fechaInicial AND :fechaFinal  AND  po.estadosPostulacion.idEstadoPostulacion =:idEstadoPostulacion"),
-    @NamedQuery(name = "PostulacionDetalle.findByIdPostulacion", query="SELECT p FROM PostulacionDetalle p INNER JOIN p.postulacion po WHERE po.idPostulacion = :idPostulacion AND  po.estadosPostulacion.idEstadoPostulacion =:idEstadoPostulacion"),
+    @NamedQuery(name = "PostulacionDetalle.findByDay", query="SELECT p FROM PostulacionDetalle p INNER JOIN p.postulacion po INNER JOIN po.estadosPostulacion e WHERE p.fechaPostulacion = :fechaPostulacion  AND  e.idEstadoPostulacion =: idEstadoPostulacion"),
+    @NamedQuery(name = "PostulacionDetalle.findByDayAndHour", query="SELECT p FROM PostulacionDetalle p INNER JOIN p.postulacion po INNER JOIN po.estadosPostulacion e WHERE p.fechaPostulacion = :fechaPostulacion AND p.horaInicial = :hora  AND  e.idEstadoPostulacion =: idEstadoPostulacion"),
+    @NamedQuery(name = "PostulacionDetalle.findByDate", query="SELECT p FROM PostulacionDetalle p INNER JOIN p.postulacion po INNER JOIN po.estadosPostulacion e WHERE p.fechaPostulacion BETWEEN :fechaInicial AND :fechaFinal  AND  e.idEstadoPostulacion =: idEstadoPostulacion"),
+    @NamedQuery(name = "PostulacionDetalle.findByIdPostulacion", query="SELECT p FROM PostulacionDetalle p INNER JOIN p.postulacion po INNER JOIN po.estadosPostulacion e WHERE po.idPostulacion = :idPostulacion AND  e.idEstadoPostulacion =: idEstadoPostulacion"),
 })
 public class PostulacionDetalle implements Serializable {
     private static final long serialVersionUID = 1L;
