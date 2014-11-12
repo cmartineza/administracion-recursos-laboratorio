@@ -37,16 +37,19 @@
             </div>
             <div>
                 <div id="left">
-                    <p:panelMenu style="width:300px">
-                        <p:submenu label="Usuarios">
-                            <p:menuitem value="Administracion" action="adminUsuarios" />
-                        </p:submenu>
-                        <p:separator />
-                        <p:submenu label="Acciones" >        
-                            <p:menuitem value="Solicitar Reservas" action="reserva" icon="ui-icon-home" />
-                            <p:menuitem value="Consultar Reservas" action="consulta_reserva"/>        
-                        </p:submenu>
-                    </p:panelMenu>
+                    
+                    <h:form>
+                        <p:panelMenu style="width:300px">
+                            <p:submenu label="Usuarios">
+                                <p:menuitem value="Administracion" action="adminUsuarios" />
+                            </p:submenu>
+                            <p:separator />
+                            <p:submenu label="Acciones" >        
+                                <p:menuitem value="Solicitar Reservas" action="reserva" icon="ui-icon-home" />
+                                <p:menuitem value="Consultar Reservas" action="consulta_reserva"/>        
+                            </p:submenu>
+                        </p:panelMenu>
+                    </h:form>
                 </div>
                 <div id="content" class="left_content">
                     <ui:insert name="content">Content</ui:insert>
