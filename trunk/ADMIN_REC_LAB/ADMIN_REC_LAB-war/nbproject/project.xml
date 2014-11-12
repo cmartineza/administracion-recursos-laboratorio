@@ -10,7 +10,7 @@
                     <file>${reference.ADMIN_REC_LAB-ejb.dist}</file>
                 </library>
                 <library dirs="200">
-                    <file>${libs.Primefaces 5.0.classpath}</file>
+                    <file>${file.reference.primefaces-5.0.jar}</file>
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
             </web-module-libraries>

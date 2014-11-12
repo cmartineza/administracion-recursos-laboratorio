@@ -32,7 +32,7 @@ public class ServiceUsuario {
     private @EJB EstadoUsuariosDao daoEstadoUsuario;
     private @EJB ProfesorHasEstudianteDao daoProfEstu;
     
-    public Usuario validarUsuario(String idUsuario, String contrasena){
+    public Usuario validarUsuario(int idUsuario, String contrasena){
       return daoUsuario.login(idUsuario, contrasena);
     }
     
